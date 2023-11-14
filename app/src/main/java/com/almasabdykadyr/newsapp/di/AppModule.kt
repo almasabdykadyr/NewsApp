@@ -3,9 +3,9 @@ package com.almasabdykadyr.newsapp.di
 import android.app.Application
 import com.almasabdykadyr.newsapp.data.manager.LocalUserManagerImpl
 import com.almasabdykadyr.newsapp.domain.manager.LocalUserManager
-import com.almasabdykadyr.newsapp.domain.usecases.AppEntryUseCases
-import com.almasabdykadyr.newsapp.domain.usecases.ReadAppEntry
-import com.almasabdykadyr.newsapp.domain.usecases.SaveAppEntry
+import com.almasabdykadyr.newsapp.domain.usecases.appentry.AppEntryUseCases
+import com.almasabdykadyr.newsapp.domain.usecases.appentry.ReadAppEntry
+import com.almasabdykadyr.newsapp.domain.usecases.appentry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

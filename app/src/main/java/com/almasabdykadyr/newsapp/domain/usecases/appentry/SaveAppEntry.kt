@@ -1,4 +1,4 @@
-package com.almasabdykadyr.newsapp.domain.usecases
+package com.almasabdykadyr.newsapp.domain.usecases.appentry
 
 import com.almasabdykadyr.newsapp.domain.manager.LocalUserManager
 
