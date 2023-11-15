@@ -13,10 +13,9 @@ object Dimens {
     val IndicatorSize = 14.dp
     val PageIndicatorWidth = 52.dp
 
-    @ExperimentalFoundationApi
-    val OnBoardingScreenPagerSize = object : PageSize {
-        override fun Density.calculateMainAxisPageSize(availableSpace: Int, pageSpacing: Int): Int {
-            return (availableSpace)
-        }
-    }
+    val ArticleCardSize = 96.dp
+    val ExtraSmallPadding = 3.dp
+    val ExtraSmallPadding2 = 6.dp
+
+    val SmallIconSize = 11.dp
 }
