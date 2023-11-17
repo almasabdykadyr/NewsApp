@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -19,7 +18,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.almasabdykadyr.newsapp.presentation.Dimens.MediumPadding2
 import com.almasabdykadyr.newsapp.presentation.Dimens.PageIndicatorWidth
 import com.almasabdykadyr.newsapp.presentation.common.NewsButton
@@ -28,6 +26,7 @@ import com.almasabdykadyr.newsapp.presentation.onboarding.components.OnBoardingP
 import com.almasabdykadyr.newsapp.presentation.onboarding.components.PageIndicator
 import kotlinx.coroutines.launch
 
+//FIXME: pager space to include gestures
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnBoardingScreen(
@@ -41,6 +40,7 @@ fun OnBoardingScreen(
         }
 
         val buttonState = remember {
+
             derivedStateOf {
                 when (pagerState.currentPage) {
                     0 -> listOf("", "Next")
@@ -99,6 +99,7 @@ fun OnBoardingScreen(
                 })
             }
         }
+
         Spacer(modifier = Modifier.weight(0.5f))
     }
 }
