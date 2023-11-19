@@ -60,19 +60,19 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigation: (String) -> Unit)
 
         Spacer(modifier = Modifier.height(MediumPadding1))
 
-        SearchBar(text = "", readOnly = true, onValueChanged = {}, onClick = {
+        SearchBar(modifier = Modifier.padding(horizontal = MediumPadding1) ,text = "", readOnly = true, onValueChanged = {}, onClick = {
             navigation(Route.SearchScreen.route)
         }, onSearch = {})
 
         Spacer(modifier = Modifier.height(MediumPadding1))
 
         //TODO: move to new component
-        //FIXME: fix paddings
+        //TODO: add shimmer effect
         Text(
             text = titles,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = MediumPadding1)
+                .padding(start = MediumPadding1, end = MediumPadding1)
                 .basicMarquee(),
             fontSize = 12.sp,
             color = colorResource(id = R.color.placeholder),
@@ -81,7 +81,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigation: (String) -> Unit)
 
         Spacer (modifier = Modifier.height(MediumPadding1))
 
-        ArticlesList(articles = articles, modifier = Modifier.padding(top = MediumPadding1), onClick = {
+        ArticlesList(articles = articles, modifier = Modifier.padding(horizontal = MediumPadding1), onClick = {
             navigation(Route.DetailsScreen.route)
         })
     }
