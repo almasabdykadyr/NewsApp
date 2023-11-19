@@ -23,9 +23,9 @@ fun ArticlesList(
 
     if (handlePagingResult) {
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(MediumPadding1),
-            contentPadding = PaddingValues(all = ExtraSmallPadding2)
+            contentPadding = PaddingValues(vertical = ExtraSmallPadding2)
         ) {
             items(count = articles.itemCount) {
                 articles[it]?.let {
@@ -78,7 +78,10 @@ fun HandlePagingResult(
 
 @Composable
 private fun ShimmerEffect() {
-    Column(verticalArrangement = Arrangement.spacedBy(MediumPadding1)) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(MediumPadding1),
+        modifier = Modifier.padding(horizontal = MediumPadding1)
+    ) {
         repeat(10) {
             ArticleCardShimmerEffect(
                 modifier = Modifier.padding(horizontal = MediumPadding1)
