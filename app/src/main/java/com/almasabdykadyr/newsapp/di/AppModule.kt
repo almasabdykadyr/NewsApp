@@ -14,6 +14,7 @@ import com.almasabdykadyr.newsapp.domain.usecases.appentry.AppEntryUseCases
 import com.almasabdykadyr.newsapp.domain.usecases.appentry.ReadAppEntry
 import com.almasabdykadyr.newsapp.domain.usecases.appentry.SaveAppEntry
 import com.almasabdykadyr.newsapp.domain.usecases.news.DeleteArticleUseCase
+import com.almasabdykadyr.newsapp.domain.usecases.news.GetArticleUseCase
 import com.almasabdykadyr.newsapp.domain.usecases.news.GetArticlesUseCase
 import com.almasabdykadyr.newsapp.domain.usecases.news.GetNewsUseCase
 import com.almasabdykadyr.newsapp.domain.usecases.news.NewsUseCases
@@ -63,7 +64,8 @@ object AppModule {
         searchNewsUseCase = SearchNewsUseCase(newsRepository),
         upsertArticleUseCase = UpsertArticleUseCase(newsDao),
         deleteArticleUseCase = DeleteArticleUseCase(newsDao),
-        getArticlesUseCase = GetArticlesUseCase(newsDao)
+        getArticlesUseCase = GetArticlesUseCase(newsDao),
+        getArticleUseCase = GetArticleUseCase(newsDao)
     )
 
     @Provides
