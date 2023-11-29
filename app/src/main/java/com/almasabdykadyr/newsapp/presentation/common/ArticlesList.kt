@@ -1,6 +1,5 @@
 package com.almasabdykadyr.newsapp.presentation.common
 
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,7 +18,7 @@ import com.almasabdykadyr.newsapp.presentation.Dimens.MediumPadding1
 fun ArticlesList(
     modifier: Modifier = Modifier, articles: LazyPagingItems<Article>, onClick: (Article) -> Unit
 ) {
-    val handlePagingResult = HandlePagingResult(articles = articles)
+    val handlePagingResult = handlePagingResult(articles = articles)
 
     if (handlePagingResult) {
         LazyColumn(
@@ -28,8 +27,8 @@ fun ArticlesList(
             contentPadding = PaddingValues(vertical = ExtraSmallPadding2)
         ) {
             items(count = articles.itemCount) {
-                articles[it]?.let {
-                    ArticleCard(article = it, onClick = { onClick(it) })
+                articles[it]?.let { article ->
+                    ArticleCard(article = article, onClick = { onClick(article) })
                 }
             }
         }
@@ -37,7 +36,24 @@ fun ArticlesList(
 }
 
 @Composable
-fun HandlePagingResult(
+fun ArticlesList(
+    modifier: Modifier = Modifier, articles: List<Article>, onClick: (Article) -> Unit
+) {
+
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(MediumPadding1),
+        contentPadding = PaddingValues(vertical = ExtraSmallPadding2)
+    ) {
+        items(count = articles.size) {
+            val article = articles[it]
+            ArticleCard(article = article, onClick = { onClick(article) })
+        }
+    }
+}
+
+@Composable
+fun handlePagingResult(
     articles: LazyPagingItems<Article>
 ): Boolean {
 
@@ -75,6 +91,7 @@ fun HandlePagingResult(
         }
     }
 }
+
 
 @Composable
 private fun ShimmerEffect() {
