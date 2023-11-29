@@ -6,7 +6,7 @@ class GetArticlesUseCase(
     private val newsDao: NewsDao
 ) {
 
-    suspend operator fun invoke() {
+    operator fun invoke() {
         newsDao.getArticles()
     }
 }
