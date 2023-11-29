@@ -24,6 +24,7 @@ class NewsPagingSource(
         val page = params.key ?: 1
 
         return try {
+
             val newsResponse = newsApi.getNews(sources = sources, page = page)
             totalNewsCount += newsResponse.articles.size
 

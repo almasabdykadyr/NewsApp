@@ -24,10 +24,13 @@ class MainActivity : ComponentActivity() {
     private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
         installSplashScreen().apply {
+
             setKeepOnScreenCondition {
                 viewModel.splashCondition
             }
@@ -41,8 +44,7 @@ class MainActivity : ComponentActivity() {
 
                 SideEffect {
                     systemUiController.setSystemBarsColor(
-                        color = Color.Transparent,
-                        darkIcons = !isSystemIsDarkMode
+                        color = Color.Transparent, darkIcons = !isSystemIsDarkMode
                     )
                 }
 

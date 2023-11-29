@@ -1,6 +1,5 @@
 package com.almasabdykadyr.newsapp.presentation.navgraph
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -22,25 +21,24 @@ fun NavGraph(
     NavHost(navController = navController, startDestination = startDestination) {
 
         navigation(
-            route = Route.AppStartNavigation.route,
-            startDestination = Route.OnBoardingScreen.route
+            route = Route.AppStartNavigation.route, startDestination = Route.OnBoardingScreen.route
         ) {
             composable(
                 route = Route.OnBoardingScreen.route
             ) {
-                val viewModel : OnBoardingViewModel = hiltViewModel()
+                val viewModel: OnBoardingViewModel = hiltViewModel()
                 OnBoardingScreen(event = viewModel::onEvent)
             }
         }
 
         navigation(
-            route = Route.NewsNavigation.route,
-            startDestination = Route.NewsNavigatorScreen.route
+            route = Route.NewsNavigation.route, startDestination = Route.NewsNavigatorScreen.route
         ) {
             composable(
                 route = Route.NewsNavigatorScreen.route
             ) {
-                val viewModel : HomeViewModel = hiltViewModel()
+
+                val viewModel: HomeViewModel = hiltViewModel()
                 HomeScreen(articles = viewModel.news.collectAsLazyPagingItems(), navigation = {})
             }
         }
