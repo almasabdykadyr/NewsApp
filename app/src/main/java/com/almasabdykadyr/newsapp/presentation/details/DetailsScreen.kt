@@ -59,7 +59,7 @@ fun DetailsScreen(
                 }
             }
 
-        }, onBookmarkClick = { event(DetailsEvent.UpsertDeleteArticle) }, onBackClick = { navigateUp })
+        }, onBookmarkClick = { event(DetailsEvent.UpsertDeleteArticle(article)) }, onBackClick = { navigateUp })
 
         LazyColumn(
             modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(
@@ -105,7 +105,7 @@ fun DetailsScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun preview() {
+fun Preview() {
     NewsAppTheme {
         DetailsScreen(article = Article(
             source = Source("engadget", "Engadget"),
