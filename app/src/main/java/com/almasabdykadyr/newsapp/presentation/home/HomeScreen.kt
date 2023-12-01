@@ -27,16 +27,19 @@ import com.almasabdykadyr.newsapp.domain.model.Article
 import com.almasabdykadyr.newsapp.presentation.Dimens.MediumPadding1
 import com.almasabdykadyr.newsapp.presentation.common.ArticlesList
 import com.almasabdykadyr.newsapp.presentation.common.SearchBar
-import com.almasabdykadyr.newsapp.presentation.navgraph.Route
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeScreen(articles: LazyPagingItems<Article>, navigation: (String) -> Unit) {
+fun HomeScreen(
+    articles: LazyPagingItems<Article>,
+    navigateToSearch: () -> Unit,
+    navigateToDetails: (Article) -> Unit
+) {
 
     val titles by remember {
         derivedStateOf {
             if (articles.itemCount > 10) {
-                articles.itemSnapshotList.items.slice(0..9).joinToString("|") { item -> item.title}
+                articles.itemSnapshotList.items.slice(0..9).joinToString("|") { item -> item.title }
             } else {
                 ""
             }
@@ -60,9 +63,14 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigation: (String) -> Unit)
 
         Spacer(modifier = Modifier.height(MediumPadding1))
 
-        SearchBar(modifier = Modifier.padding(horizontal = MediumPadding1) ,text = "", readOnly = true, onValueChanged = {}, onClick = {
-            navigation(Route.SearchScreen.route)
-        }, onSearch = {})
+        SearchBar(modifier = Modifier.padding(horizontal = MediumPadding1),
+            text = "",
+            readOnly = true,
+            onValueChanged = {},
+            onClick = {
+                navigateToSearch()
+            },
+            onSearch = {})
 
         Spacer(modifier = Modifier.height(MediumPadding1))
 
@@ -79,11 +87,13 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigation: (String) -> Unit)
             maxLines = 1
         )
 
-        Spacer (modifier = Modifier.height(MediumPadding1))
+        Spacer(modifier = Modifier.height(MediumPadding1))
 
-        ArticlesList(articles = articles, modifier = Modifier.padding(horizontal = MediumPadding1), onClick = {
-            navigation(Route.DetailsScreen.route)
-        })
+        ArticlesList(articles = articles,
+            modifier = Modifier.padding(horizontal = MediumPadding1),
+            onClick = {
+                navigateToDetails(it)
+            })
     }
 }
 
